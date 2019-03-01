@@ -1,0 +1,1 @@
+<a href="${pageContext.request.contextPath}/admin/${Customer.nameCustomer}/add"><h1>Add Product</h1></a>
