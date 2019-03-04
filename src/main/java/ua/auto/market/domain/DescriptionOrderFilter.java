@@ -4,7 +4,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Expression; 
+
 
 import ua.auto.market.entity.enumeration.Manufacture;
 import ua.auto.market.entity.enumeration.TypeProduct;
