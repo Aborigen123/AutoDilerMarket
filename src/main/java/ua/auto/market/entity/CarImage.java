@@ -13,94 +13,111 @@ import javax.persistence.Table;
 public class CarImage extends BaseEntity {
 
 	@Column(name = "car_image1")
-	private String stickerImage1;
+	private String carImage1;
 	
 	@Column(name = "car_image2")
-	private String stickerImage2;
+	private String carImage2;
 	
 	@Column(name = "car_image3")
-	private String stickerImage3;
+	private String carImage3;
 	
 	@Column(name = "car_image4")
-	private String stickerImage4;
+	private String carImage4;
 	
 	@Column(name = "car_image5")
-	private String stickerImage5;
+	private String carImage5;
 	
 	@Column(name = "car_image6")
-	private String stickerImage6;
+	private String carImage6;
 	
 	 @ManyToOne( fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	    @JoinColumn(name = "description_order_id", nullable = true)
 	    private DescriptionOrder descriptionOrder;
 
-	public String getStickerImage1() {
-		return stickerImage1;
+
+	 public CarImage(String carImage1, String carImage2, String carImage3, String carImage4, String carImage5,
+			String carImage6, DescriptionOrder descriptionOrder) {
+		super();
+		this.carImage1 = carImage1;
+		this.carImage2 = carImage2;
+		this.carImage3 = carImage3;
+		this.carImage4 = carImage4;
+		this.carImage5 = carImage5;
+		this.carImage6 = carImage6;
+		this.descriptionOrder = descriptionOrder;
 	}
 
-	public void setStickerImage1(String stickerImage1) {
-		this.stickerImage1 = stickerImage1;
+
+	public String getCarImage1() {
+		return carImage1;
 	}
 
-	public String getStickerImage2() {
-		return stickerImage2;
+
+	public void setCarImage1(String carImage1) {
+		this.carImage1 = carImage1;
 	}
 
-	public void setStickerImage2(String stickerImage2) {
-		this.stickerImage2 = stickerImage2;
+
+	public String getCarImage2() {
+		return carImage2;
 	}
 
-	public String getStickerImage3() {
-		return stickerImage3;
+
+	public void setCarImage2(String carImage2) {
+		this.carImage2 = carImage2;
 	}
 
-	public void setStickerImage3(String stickerImage3) {
-		this.stickerImage3 = stickerImage3;
+
+	public String getCarImage3() {
+		return carImage3;
 	}
 
-	public String getStickerImage4() {
-		return stickerImage4;
+
+	public void setCarImage3(String carImage3) {
+		this.carImage3 = carImage3;
 	}
 
-	public void setStickerImage4(String stickerImage4) {
-		this.stickerImage4 = stickerImage4;
+
+	public String getCarImage4() {
+		return carImage4;
 	}
 
-	public String getStickerImage5() {
-		return stickerImage5;
+
+	public void setCarImage4(String carImage4) {
+		this.carImage4 = carImage4;
 	}
 
-	public void setStickerImage5(String stickerImage5) {
-		this.stickerImage5 = stickerImage5;
+
+	public String getCarImage5() {
+		return carImage5;
 	}
 
-	public String getStickerImage6() {
-		return stickerImage6;
+
+	public void setCarImage5(String carImage5) {
+		this.carImage5 = carImage5;
 	}
 
-	public void setStickerImage6(String stickerImage6) {
-		this.stickerImage6 = stickerImage6;
+
+	public String getCarImage6() {
+		return carImage6;
 	}
+
+
+	public void setCarImage6(String carImage6) {
+		this.carImage6 = carImage6;
+	}
+
 
 	public DescriptionOrder getDescriptionOrder() {
 		return descriptionOrder;
 	}
 
+
 	public void setDescriptionOrder(DescriptionOrder descriptionOrder) {
 		this.descriptionOrder = descriptionOrder;
 	}
 
-	public CarImage(String stickerImage1, String stickerImage2, String stickerImage3, String stickerImage4,
-			String stickerImage5, String stickerImage6, DescriptionOrder descriptionOrder) {
-		super();
-		this.stickerImage1 = stickerImage1;
-		this.stickerImage2 = stickerImage2;
-		this.stickerImage3 = stickerImage3;
-		this.stickerImage4 = stickerImage4;
-		this.stickerImage5 = stickerImage5;
-		this.stickerImage6 = stickerImage6;
-		this.descriptionOrder = descriptionOrder;
-	}
-	 public CarImage() {};
+
+	public CarImage() {};
 	 
 }

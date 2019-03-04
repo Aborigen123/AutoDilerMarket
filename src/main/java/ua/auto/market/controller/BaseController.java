@@ -20,10 +20,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import ua.auto.market.domain.CreateProduct;
 import ua.auto.market.domain.CustomerRegistrationRequest;
 import ua.auto.market.domain.DescriptionOrderFilter;
 import ua.auto.market.domain.LoginRequest;
@@ -67,13 +69,14 @@ public class BaseController {
 		
 	
 		
-		
+	
 		for(int i = 0; i < carImage.size(); i++) {
-			String image = carImage.get(i).getStickerImage1();
-			carImage.get(i).setStickerImage1(
+			String image = carImage.get(i).getCarImage1();
+			carImage.get(i).setCarImage1(
 					CustomFileUtils.getImage(
-							"product_" + carImage.get(i).getId(), 
-							image));
+							"admin_product_" + carImage.get(i).getId(), 
+							image)
+							);
 			
 		}
 
@@ -90,6 +93,91 @@ public List<Manufacture>  manufactureTupe(){
 	return productOnSellService.findAllProductOnSell()
 			.stream().map(productOnSell -> ((productOnSell) productOnSell).getManufacture()).collect(Collectors.toList());
 }*/
+	
+	
+
+	@GetMapping("/product/{productId}")
+	public String descriptionOrder(Model model, @PathVariable("productId")Long id) throws IOException {
+		
+		DescriptionOrder descr = descriptionOrderService.findDuscriptionOrderImageById(id);//findDuscriptionOrderImageById
+		CarImage carImage = carImageService.findCarImageById(id);
+	
+	
+			String image1 = carImage.getCarImage1();
+			if(image1.isEmpty()) {
+				image1 = "";
+			}else {
+			carImage.setCarImage1(
+					CustomFileUtils.getImage(
+							"admin_product_" + carImage.getId(), 
+							image1));
+			}
+			String image2 = carImage.getCarImage2();
+			if(image2.isEmpty()) {
+				image2 = "";
+			}else {
+			carImage.setCarImage2(
+					CustomFileUtils.getImage(
+							"admin_product_" + carImage.getId(), 
+							image2));
+			}
+			String image3 = carImage.getCarImage3();
+			if(image3.isEmpty()) {
+				image3 = "";
+			}else {
+			carImage.setCarImage3(
+					CustomFileUtils.getImage(
+							"admin_product_" + carImage.getId(), 
+							image3));
+			}
+			String image4 = carImage.getCarImage4();
+			if(image4.isEmpty()) {
+				image4 = "";
+			}else {
+			carImage.setCarImage4(
+					CustomFileUtils.getImage(
+							"admin_product_" + carImage.getId(), 
+							image4));
+			}
+			
+			String image5 = carImage.getCarImage5();
+			if(image5.isEmpty()) {
+				image5 = "";
+			}else {
+			carImage.setCarImage5(
+					CustomFileUtils.getImage(
+							"admin_product_" + carImage.getId(), 
+							image5));
+			}
+			
+			String image6 = carImage.getCarImage6();
+			if(image6.isEmpty()) {
+				image6 = "";
+			}else {
+			carImage.setCarImage6(
+					CustomFileUtils.getImage(
+							"admin_product_" + carImage.getId(), 
+							image6));
+			}
+		model.addAttribute("decriptionOrder",carImage);
+		model.addAttribute("carImageList",carImage);
+		return "descriptionOrder";
+	}
+	
+	@PostMapping("/product/{productId}")
+	public String buyProduct(Model model, @PathVariable("productId")Long id, @ModelAttribute("decriptionOrder")CarImage carImage) {
+		DescriptionOrder desr = descriptionOrderService.findDescriptionOrderById(id);
+		int quantity = desr.getQuantity();
+		if(quantity <= 0) {
+		System.out.println("Dont can buy");	
+		}else {
+		int newQuantity = quantity-1;
+		desr.setQuantity(newQuantity);
+		descriptionOrderService.saveDescriptionOrderOne(desr);
+		}
+		return "redirect:/product/"+ desr.getId();
+	}
+	
 	
 	@GetMapping("/404")
 	public String show404() {

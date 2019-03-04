@@ -1,5 +1,7 @@
 package ua.auto.market.domain;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.criteria.Expression;
@@ -10,10 +12,11 @@ import ua.auto.market.entity.enumeration.TypeProduct;
 public class DescriptionOrderFilter {
 
 	private String nameProduct;
-	//@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.STRING)
 		private TypeProduct typeProduct;
 	
-//	@Enumerated(EnumType.STRING)
+	
+	  @Enumerated(EnumType.STRING)
 		private Manufacture manufacture;
 	
 	private int year;

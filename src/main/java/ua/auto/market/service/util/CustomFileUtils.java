@@ -3,6 +3,7 @@ package ua.auto.market.service.util;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -11,12 +12,14 @@ import org.apache.commons.io.FileUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.web.multipart.MultipartFile;
 
+
+
 public final class CustomFileUtils {
 
 	static String PROJECT_PATH = System.getProperty("user.dir");
 	static String SEPARATOR = System.getProperty("file.separator");
 	static String ROOT_PATH = PROJECT_PATH + SEPARATOR + "src" + SEPARATOR + "main" + SEPARATOR + "webapp" + SEPARATOR + "upload";
-	
+	static int fileSize;
 	public static File createFolder(String folderName) {
 
 		File uploadDir = new File(ROOT_PATH);
@@ -77,11 +80,13 @@ public final class CustomFileUtils {
 		File file = null;
 		byte[] encodeFileToByte = null;
 		String encodedFile = null;
-		
+
 		System.out.println("Image: " + image);
 		String defaultPath = ROOT_PATH + SEPARATOR + "default.png";
+	
 		
-		if (image != null && image != "") {
+			if (image != null && image != "") {
+			
 			file = new File(ROOT_PATH + SEPARATOR + folderName + SEPARATOR + image);
 			
 			if(!file.exists()) { 
@@ -97,4 +102,47 @@ public final class CustomFileUtils {
 		
 		return encodedFile;
 	}
+	
+	public static int getFolderImageSize(String folderName) throws IOException {
+		int allFileCount = 0;
+if (folderName != null && folderName != "") {
+			File file2 = new File(ROOT_PATH + SEPARATOR + folderName + SEPARATOR);
+			File[] fileList = file2.listFiles();
+			 allFileCount = fileList.length;
+	
+}		
+		return allFileCount;
+	}
+ 
+public static String getImage2(String folderName, String image2) throws IOException {
+		
+		File file = null;
+		byte[] encodeFileToByte = null;
+		String encodedFile = null;
+
+		System.out.println("Image: " + image2);
+		String defaultPath = ROOT_PATH + SEPARATOR + "default.png";
+	
+		
+			if (image2 != null && image2 != "") {
+			
+			file = new File(ROOT_PATH + SEPARATOR + folderName + SEPARATOR + image2);
+			
+			if(!file.exists()) { 
+				file = new File(defaultPath); 
+			}
+		} else {
+			file = new File(defaultPath);
+		}
+		
+		System.out.println(file.getAbsolutePath());	
+		encodeFileToByte = Base64.encodeBase64(FileUtils.readFileToByteArray(file));
+		encodedFile = new String(encodeFileToByte);
+		
+		return encodedFile;
+	}
+	
+	
+
+
 }

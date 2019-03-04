@@ -7,13 +7,13 @@ import lombok.Getter;
 
 public enum Manufacture {
 	
-	Nothing,
+/*	Nothing,
 	Audi,
 	Mercedes_Benz,
 	BMW,
 	Lexus,
 	Ford,
-	Fiat;/*
+	Fiat;*/
 Nothing("Nothing"),
 Audi("Audi"),
 Mercedes_Benz("Mercedes_Benz"),
@@ -34,6 +34,6 @@ public void setManufacture(String manufacture) {
 
 private Manufacture(String manufacture) {
 	this.manufacture = manufacture;
-}*/
+}
 	
 }

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,6 +36,7 @@ public class DescriptionOrder extends BaseEntity{
 	  @Column(name = "price",columnDefinition = "DECIMAL(5,2)")
 		private BigDecimal price;
 	  
+	
 	  @Enumerated(EnumType.STRING)
 		 private Manufacture manufacture;
 	  

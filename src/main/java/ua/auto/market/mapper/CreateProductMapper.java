@@ -27,12 +27,12 @@ public interface CreateProductMapper {
 	public static CarImage createProductToDescriptionOrder2(CreateProduct createProduct) {
 		CarImage carImage = new CarImage();
 	
-		carImage.setStickerImage1(createProduct.getCarImage1().getOriginalFilename());
-		carImage.setStickerImage2(createProduct.getCarImage2().getOriginalFilename());
-		carImage.setStickerImage3(createProduct.getCarImage3().getOriginalFilename());
-		carImage.setStickerImage4(createProduct.getCarImage4().getOriginalFilename());
-		carImage.setStickerImage5(createProduct.getCarImage5().getOriginalFilename());
-		carImage.setStickerImage6(createProduct.getCarImage6().getOriginalFilename());
+		carImage.setCarImage1(createProduct.getCarImage1().getOriginalFilename());
+		carImage.setCarImage2(createProduct.getCarImage2().getOriginalFilename());
+		carImage.setCarImage3(createProduct.getCarImage3().getOriginalFilename());
+		carImage.setCarImage4(createProduct.getCarImage4().getOriginalFilename());
+		carImage.setCarImage5(createProduct.getCarImage5().getOriginalFilename());
+		carImage.setCarImage6(createProduct.getCarImage6().getOriginalFilename());
 		
 		return carImage;
 	}

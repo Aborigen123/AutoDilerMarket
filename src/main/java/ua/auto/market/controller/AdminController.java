@@ -73,8 +73,8 @@ public String addProductPost(Model model,Principal principal,  @PathVariable ("n
 	descriptionOrderService.saveDescriptionOrder(descr, carImageSave);
 
 	
-	CustomFileUtils.createFolder("product_"+ customer.getId());
-	CustomFileUtils.createImage("product_" + customer.getId(), createProduct.getCarImage1(),createProduct.getCarImage2(),createProduct.getCarImage3(),createProduct.getCarImage4(),createProduct.getCarImage5(),createProduct.getCarImage6());
+	CustomFileUtils.createFolder("admin_product_"+ customer.getId());
+	CustomFileUtils.createImage("admin_product_" + customer.getId(), createProduct.getCarImage1(),createProduct.getCarImage2(),createProduct.getCarImage3(),createProduct.getCarImage4(),createProduct.getCarImage5(),createProduct.getCarImage6());
 	return "redirect:/admin/"+ nameCustomer+"/add";
 }
 

@@ -11,4 +11,6 @@ public interface CarImageService {
 	List<CarImage> findAllCarImage();
 	
 	CarImage findImageById(Long id);
+	
+	CarImage findCarImageById(long id);
 }

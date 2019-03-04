@@ -107,9 +107,21 @@ public class DescriptionOrderServiceImpl implements DescriptionOrderService{
 	}
 
 	@Override
-	public DescriptionOrder findDescriptionOrderById(Long id) {
+	public DescriptionOrder findDescriptionOrderById(long id) {
 		
 		return descriptionOrderRepository.findOne(id);
+	}
+
+	@Override
+	public DescriptionOrder findDuscriptionOrderImageById(long id) {
+		
+		return descriptionOrderRepository.findOne(id);
+	}
+
+	@Override
+	public void saveDescriptionOrderOne(DescriptionOrder descriptionOrder) {
+     descriptionOrderRepository.save(descriptionOrder);
+		
 	}
 
 

@@ -33,4 +33,10 @@ public class CarImageServiceImpl implements CarImageService{
 		return carImageRepository.findOne(id);
 	}
 
+	@Override
+	public CarImage findCarImageById(long id) {
+		
+		return carImageRepository.findOne(id);
+	}
+
 }

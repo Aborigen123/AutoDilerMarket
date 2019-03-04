@@ -180,8 +180,8 @@
 						
 						<c:forEach items="${carImageList}" var="image" >
 						<div class="slide">
-							<a href="#">
-									<img src="data:image/png;base64,${image.stickerImage1}"/>
+							<a href="${pageContext.request.contextPath}/product/${image.descriptionOrder.id}">
+									<img src="data:image/png;base64,${image.carImage1}"/>
 								<div class="description"><br/>${image.descriptionOrder.nameProduct}<br/>230 HP<br/>Body Coupe<br/>80 000 Miles</div>
 								<div class="title">Mercedes-Benz <span class="price">$ 115 265</span></div>
 							</a>
