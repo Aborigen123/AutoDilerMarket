@@ -1,6 +1,7 @@
 package ua.auto.market.service.impl;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+
 
 import lombok.extern.slf4j.Slf4j;
 import ua.auto.market.domain.DescriptionOrderFilter;
@@ -61,50 +63,44 @@ public class DescriptionOrderServiceImpl implements DescriptionOrderService{
 	private Specification<DescriptionOrder> getSpecification(DescriptionOrderFilter filter){
 		return new Specification<DescriptionOrder>() {
 
+			private List<Predicate> predicateList = new ArrayList<Predicate>();
+             private 	Predicate predicateDo ;
 			@Override
 			public Predicate toPredicate(Root<DescriptionOrder> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-			//	if(filter.getNameProduct().isEmpty()) return null;
-		//	if(String.valueOf(filter.getManufacture()).isEmpty()) return null;
-				/*		if(String.valueOf(filter.getPricefrom()).isEmpty()) return null;
-				if(String.valueOf(filter.getPricedo()).isEmpty()) return null;
-				if(String.valueOf(filter.getTypeProduct()).isEmpty()) return null;
-				if(String.valueOf(filter.getYear()).isEmpty()) return null;*/
+			
 				
-			//	Predicate predicateName = cb.like(root.get("nameProduct"), "%" + filter.getNameProduct() + "%");
-			//		Predicate predicateManufacture = cb.like(root.get("manufacturer"), String.valueOf(filter.getManufacture()) );
-					/*	Predicate predicateBetweenPrice = cb.between(root.get("pricefrom,pricedo"), filter.getPricefrom(), filter.getPricedo());
-				Predicate predicateTypeProduct = cb.like(root.get("typeProduct"), String.valueOf(filter.getTypeProduct()) );*/
+          		Predicate predicateName  = cb.like(root.get("nameProduct"), "%" + filter.getNameProduct() + "%");
+				Predicate predicateManufacture = cb.like(root.get("manufacture"), filter.getManufacture() );
+				Predicate predicateBetweenPrice= null;
+				Predicate predicateTypeProduct= null;
 				
+			
 				
-			//	Predicate allPredicate = cb.and(predicateName, predicateManufacture);//,predicateManufacture,predicateBetweenPrice,predicateTypeProduct
 		
-			//cb.like(root.get("manufacture"),  "%" + filter.getManufacture() + "%" )
 	
-				//Predicate manufacturePredicate = cb.(manufactureExpression, filter.getManufacture());
-			//query.select(root).where(
-				String manufactureString = (filter.getManufacture()).toString();
-				Manufacture manufactureEnumConvert = Manufacture.valueOf(manufactureString);
-				Manufacture manufactureEnum = filter.getManufacture();
-				log.debug("------------------------------------------------------------------");
-				log.debug("manufactureString = " + manufactureString);
-			//	Path<Object> path = root.get("manufacture");
-			//	if( (Manufacture.Lexus.toString()).equals(manufactureString)) {};
-				//TEST2 cb.like(root.get("manufacture"), filter.getManufacture());
+				if((filter.getManufacture()).equals("Nothing") ) { 
+					predicateManufacture = null;
+				}else {
+					 predicateManufacture = cb.like(root.get("manufacture"), filter.getManufacture() );
+				}
 				
-		//	Expression<String> manufactureExpression = root.get("manufacture");
-		//	Predicate manufacturePredicate = cb.like(manufactureExpression, "%"+filter.getManufacture()+"%");
-		
+				Predicate [] listPredicate = {predicateName, predicateManufacture, predicateBetweenPrice};
 				
-		
-			return cb.like(root.get("manufacture"), "%" + manufactureEnum );
-			//cb.like(root.get("manufacture"), manufactureString+ "%");
+			for(int i=0; i<listPredicate.length; i++) {
+				if(listPredicate[i] != null) 		predicateList.add(listPredicate[i]);
 			}
 		
-		
+			if(predicateList.size() == 1)   predicateDo = cb.and(predicateList.get(0));
+			if(predicateList.size() == 2) 	predicateDo = cb.and(predicateList.get(0), predicateList.get(1));
+			if(predicateList.size() == 3) 	predicateDo = cb.and(predicateList.get(0),  predicateList.get(1),  predicateList.get(2));
+			if(predicateList.size() == 4) 	predicateDo = cb.and(predicateList.get(0),  predicateList.get(1),  predicateList.get(2),  predicateList.get(3));
+			 
+			return predicateDo;
+			}
 		};
-		
-		
 	}
+
+
 
 	@Override
 	public DescriptionOrder findDescriptionOrderById(long id) {
@@ -114,15 +110,12 @@ public class DescriptionOrderServiceImpl implements DescriptionOrderService{
 
 	@Override
 	public DescriptionOrder findDuscriptionOrderImageById(long id) {
-		
+
 		return descriptionOrderRepository.findOne(id);
 	}
 
 	@Override
 	public void saveDescriptionOrderOne(DescriptionOrder descriptionOrder) {
-     descriptionOrderRepository.save(descriptionOrder);
+		descriptionOrderRepository.save(descriptionOrder);
 		
-	}
-
-
-}
+	}}

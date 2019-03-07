@@ -4,12 +4,12 @@ import lombok.Getter;
 
 @Getter
 public enum TypeProduct {
-auto,
+/*auto,
 motorcycle,
 jeep,
-truck;
+truck;*/
 
-/*	Auto("Auto"),
+	Auto("Auto"),
 	Motorcycle("Motorcycle"),
 	Jeep("Jeep"),
 	Truck("Truck");
@@ -28,5 +28,5 @@ private TypeProduct(String typeProduct) {
 	this.typeProduct = typeProduct;
 }
 	
-*/
+
 }

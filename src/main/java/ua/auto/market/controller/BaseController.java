@@ -69,12 +69,14 @@ public class BaseController {
 		
 	
 		
-	
-		for(int i = 0; i < carImage.size(); i++) {
-			String image = carImage.get(i).getCarImage1();
+
+       for(int i = 0; i < carImage.size(); i++) {
+    	   String image = carImage.get(i).getCarImage1();
+    	   if(image.isEmpty()) {
+   			image="";
+   		}
 			carImage.get(i).setCarImage1(
-					CustomFileUtils.getImage(
-							"admin_product_" + carImage.get(i).getId(), 
+					CustomFileUtils.getImage2(
 							image)
 							);
 			
@@ -225,22 +227,22 @@ public List<Manufacture>  manufactureTupe(){
 	
 	@GetMapping("/searches")//,typeProduct,manufacturer,year,pricefrom,pricedo
 	public String searches( Model model, @PageableDefault Pageable pageable,	//	BindingResult result,
-		//	@RequestParam("nameProduct") String nameProduct
-			//@RequestParam("typeProduct") TypeProduct typeProduct,
-			@RequestParam("manufacture") Manufacture manufacture
-			/*	@RequestParam("year") int year,
+			@RequestParam("nameProduct") String nameProduct,
+			@RequestParam("typeProduct") String typeProduct,
+		@RequestParam("manufacture") String manufacture,
+			//	@RequestParam("year") int year,
 			@RequestParam("pricefrom") int pricefrom,
-			@RequestParam("pricedo") int pricedo*/
+			@RequestParam("priceto") int priceto
 			
 			) {
 		
 
 		
-		Page<DescriptionOrder> page = descriptionOrderService.findDescriptionOrderBy(pageable, new DescriptionOrderFilter(manufacture)); //   ,typeProduct,manufacturer,year,pricefrom,pricedo
+		Page<DescriptionOrder> page = descriptionOrderService.findDescriptionOrderBy(pageable, new DescriptionOrderFilter(nameProduct,typeProduct,manufacture,pricefrom,priceto)); 
 		model.addAttribute("descriptionOrderList", descriptionOrderService.findAllDescriptionOrder());
 		model.addAttribute("descriptionOrderList", page.getContent());
 		return "searches";
-		//BindingResult result,
+
 	}
 	
 

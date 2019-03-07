@@ -20,6 +20,7 @@ public interface DescriptionOrderService {
 	
 	Page<DescriptionOrder> findDescriptionOrderBy(Pageable pageable, DescriptionOrderFilter filter);
 	
+	
 	DescriptionOrder findDescriptionOrderById(long id);
 	
 	DescriptionOrder findDuscriptionOrderImageById(long id);

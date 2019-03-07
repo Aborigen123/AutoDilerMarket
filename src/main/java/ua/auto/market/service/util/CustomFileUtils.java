@@ -3,7 +3,6 @@ package ua.auto.market.service.util;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -34,6 +33,70 @@ public final class CustomFileUtils {
 
 		return folder;
 	}
+	
+	
+	public static File writteInUpload(String folderName) {
+
+		File uploadDir = new File(ROOT_PATH);
+		if (!uploadDir.exists()) {
+			uploadDir.mkdir();
+		}
+
+		
+
+		return uploadDir;
+	}
+	
+	
+	public static void createImageInUpload(String folderName, MultipartFile file1, MultipartFile file2, 
+			MultipartFile file3,MultipartFile file4,MultipartFile file5,
+			MultipartFile file6) throws IOException {
+	
+
+		//String defaultPath = ROOT_PATH + SEPARATOR + "default.png";
+		File uploadDir = new File(ROOT_PATH);
+		if (!file1.isEmpty() && file1 != null) {
+			BufferedImage image1 = ImageIO.read(new ByteArrayInputStream(file1.getBytes()));
+			File destination1 = new File(uploadDir.getAbsolutePath() + SEPARATOR + file1.getOriginalFilename());
+			ImageIO.write(image1, "png", destination1);
+		}/*else if(file1==null) {
+			BufferedImage image1 = ImageIO.read(new ByteArrayInputStream(defaultPath.getBytes()));
+			File fileDefault = new File(uploadDir.getAbsolutePath() + SEPARATOR + defaultPath);
+			ImageIO.write(image1, "png", fileDefault);}*/
+	
+			if (!file2.isEmpty() && file2 != null) {
+				BufferedImage image2 = ImageIO.read(new ByteArrayInputStream(file2.getBytes()));
+				File destination2 = new File(uploadDir.getAbsolutePath()  + SEPARATOR + file2.getOriginalFilename());
+				ImageIO.write(image2, "png", destination2);
+			}
+			
+			if (!file3.isEmpty() && file3 != null) {
+				BufferedImage image3 = ImageIO.read(new ByteArrayInputStream(file3.getBytes()));
+				File destination3 = new File(uploadDir.getAbsolutePath()  + SEPARATOR + file3.getOriginalFilename());
+				ImageIO.write(image3, "png", destination3);
+			}
+			
+			if (!file4.isEmpty() && file4 != null) {
+				BufferedImage image4 = ImageIO.read(new ByteArrayInputStream(file4.getBytes()));
+				File destination4 = new File(uploadDir.getAbsolutePath()  + SEPARATOR + file4.getOriginalFilename());
+				ImageIO.write(image4, "png", destination4);
+			}
+	
+			if (!file5.isEmpty() && file5 != null) {
+				BufferedImage image5 = ImageIO.read(new ByteArrayInputStream(file5.getBytes()));
+				File destination5 = new File(uploadDir.getAbsolutePath() + SEPARATOR + file5.getOriginalFilename());
+				ImageIO.write(image5, "png", destination5);
+			}
+			
+			if (!file6.isEmpty() && file6 != null) {
+				BufferedImage image6 = ImageIO.read(new ByteArrayInputStream(file6.getBytes()));
+				File destination6 = new File(uploadDir.getAbsolutePath()  + SEPARATOR + file6.getOriginalFilename());
+				ImageIO.write(image6, "png", destination6);
+			}
+	
+	}
+	
+	
 	
 	public static void createImage(String folderName, MultipartFile file1, MultipartFile file2, 
 			MultipartFile file3,MultipartFile file4,MultipartFile file5,
@@ -87,7 +150,7 @@ public final class CustomFileUtils {
 		
 			if (image != null && image != "") {
 			
-			file = new File(ROOT_PATH + SEPARATOR + folderName + SEPARATOR + image);
+			file = new File(ROOT_PATH + SEPARATOR  + image);    //	file = new File(ROOT_PATH + SEPARATOR + folderName + SEPARATOR + image);
 			
 			if(!file.exists()) { 
 				file = new File(defaultPath); 
@@ -103,18 +166,9 @@ public final class CustomFileUtils {
 		return encodedFile;
 	}
 	
-	public static int getFolderImageSize(String folderName) throws IOException {
-		int allFileCount = 0;
-if (folderName != null && folderName != "") {
-			File file2 = new File(ROOT_PATH + SEPARATOR + folderName + SEPARATOR);
-			File[] fileList = file2.listFiles();
-			 allFileCount = fileList.length;
 	
-}		
-		return allFileCount;
-	}
  
-public static String getImage2(String folderName, String image2) throws IOException {
+public static String getImage2(String image2) throws IOException {
 		
 		File file = null;
 		byte[] encodeFileToByte = null;
@@ -126,11 +180,13 @@ public static String getImage2(String folderName, String image2) throws IOExcept
 		
 			if (image2 != null && image2 != "") {
 			
-			file = new File(ROOT_PATH + SEPARATOR + folderName + SEPARATOR + image2);
+				file = new File(ROOT_PATH + SEPARATOR  + image2);
 			
-			if(!file.exists()) { 
+			if(!file.exists() ) { 
 				file = new File(defaultPath); 
 			}
+		
+			
 		} else {
 			file = new File(defaultPath);
 		}

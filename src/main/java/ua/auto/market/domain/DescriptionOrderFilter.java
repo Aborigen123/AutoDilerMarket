@@ -1,100 +1,124 @@
 package ua.auto.market.domain;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.criteria.Expression; 
 
-
-import ua.auto.market.entity.enumeration.Manufacture;
-import ua.auto.market.entity.enumeration.TypeProduct;
 
 public class DescriptionOrderFilter {
 
 	private String nameProduct;
-	@Enumerated(EnumType.STRING)
-		private TypeProduct typeProduct;
-	
-	
-	  @Enumerated(EnumType.STRING)
-		private Manufacture manufacture;
+
+
+		private String typeProduct;
+
+
+		private String manufacture;
 	
 	private int year;
 	
 	private int pricefrom;
 	
-	private int pricedo;
+	private int priceto;
 
-
-
-
-	public DescriptionOrderFilter(String nameProduct, TypeProduct typeProduct, Manufacture manufacture, int year,
-			int pricefrom, int pricedo) {
+	
+	public DescriptionOrderFilter(String nameProduct, String typeProduct, String manufacture, int year, int pricefrom,
+			int priceto) {
 		super();
 		this.nameProduct = nameProduct;
 		this.typeProduct = typeProduct;
 		this.manufacture = manufacture;
 		this.year = year;
 		this.pricefrom = pricefrom;
-		this.pricedo = pricedo;
+		this.priceto = priceto;
 	}
 
-	public TypeProduct getTypeProduct() {
-		return typeProduct;
-	}
-
-	public void setTypeProduct(TypeProduct typeProduct) {
-		this.typeProduct = typeProduct;
-	}
-
-	public Manufacture getManufacture() {
-		return manufacture;
-	}
-
-	public void setManufacture(Manufacture manufacture) {
-		this.manufacture = manufacture;
-	}
-
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
-	}
-
-	public int getPricefrom() {
-		return pricefrom;
-	}
-
-	public void setPricefrom(int pricefrom) {
-		this.pricefrom = pricefrom;
-	}
-
-	public int getPricedo() {
-		return pricedo;
-	}
-
-	public void setPricedo(int pricedo) {
-		this.pricedo = pricedo;
-	}
-
-	public DescriptionOrderFilter() { }
 
 	public String getNameProduct() {
 		return nameProduct;
 	}
 
+
 	public void setNameProduct(String nameProduct) {
 		this.nameProduct = nameProduct;
 	}
 
-	public DescriptionOrderFilter(Manufacture manufacture) {
-	
+
+	public String getTypeProduct() {
+		return typeProduct;
+	}
+
+
+	public void setTypeProduct(String typeProduct) {
+		this.typeProduct = typeProduct;
+	}
+
+
+	public String getManufacture() {
+		return manufacture;
+	}
+
+
+	public void setManufacture(String manufacture) {
 		this.manufacture = manufacture;
 	}
 
+
+	public int getYear() {
+		return year;
+	}
+
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+
+	public int getPricefrom() {
+		return pricefrom;
+	}
+
+
+	public void setPricefrom(int pricefrom) {
+		this.pricefrom = pricefrom;
+	}
+
+
+	public int getPriceto() {
+		return priceto;
+	}
+
+
+	public void setPriceto(int priceto) {
+		this.priceto = priceto;
+	}
+
+
+	public DescriptionOrderFilter(String typeProduct) {
+		this.typeProduct = typeProduct;
+	}
+
+
+	public DescriptionOrderFilter(int pricefrom, int priceto) {
+	
+		this.pricefrom = pricefrom;
+		this.priceto = priceto;
+	}
+
+
+	public DescriptionOrderFilter(String nameProduct, String typeProduct, String manufacture, int pricefrom,
+			int priceto) {
+		super();
+		this.nameProduct = nameProduct;
+		this.typeProduct = typeProduct;
+		this.manufacture = manufacture;
+		this.pricefrom = pricefrom;
+		this.priceto = priceto;
+	}
+
+
+
+
+
+
+	
 
 	
 

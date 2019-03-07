@@ -17,7 +17,7 @@
 
 		<img src="/resources/images/placeholders/220x164.gif" alt=""/>
 		<div class="description">${description.manufacture}<br/>3.0 Diesel<br/>230 HP<br/>Body Coupe<br/>80 000 Miles</div>
-		<div class="title">${description.nameProduct} <span class="price">$ 115 265</span></div>
+		<div class="title">${description.nameProduct} <span class="price">$${description.price}</span></div>
 	</a>
 
  </div>

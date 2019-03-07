@@ -60,102 +60,68 @@
 						<div class="search_auto">
 							<h3><strong>Search</strong> auto</h3>
 							<form action="/searches" >
-							<div class="categories">
-								<input type="radio" id="search_radio_1" checked="checked" name="category"/>
+							<div class="categories">  
+								<input type="radio" id="search_radio_1" name="typeProduct" checked="checked" value="Auto"/>   
 								<label for="search_radio_1" class="search_radio_1"></label>
-								<input type="radio" id="search_radio_2" name="category"/>
+								<input type="radio" id="search_radio_2" name="typeProduct"   value="Motorcycle"/>
 								<label for="search_radio_2" class="search_radio_2"></label>
-								<input type="radio" id="search_radio_3" name="category"/>
+								<input type="radio" id="search_radio_3" name="typeProduct"   value="Jeep"/>
 								<label for="search_radio_3" class="search_radio_3"></label>
-								<input type="radio" id="search_radio_4" name="category"/>
-								<label for="search_radio_4" class="search_radio_4"></label>
-							</div>
+								<input type="radio" id="search_radio_4" name="typeProduct"  value="Truck"/>
+								<label for="search_radio_4" class="search_radio_4" ></label>
+							</div> 
 							<div class="clear"></div>
 							<label><strong>Name Detail:</strong></label>
 								<div id="search_form">
-							<input type="text"class="btn_search" /><!-- name="nameProduct" -->
+							<input type="text"class="btn_search" name="nameProduct"/>
 							</div>
-							<!-- Problem with select -->
+			
 							<label><strong>Manufacturer:</strong></label>
 							<div class="select_box_1">
 							
-                            <form:select path = "manufactures" class="select_1" name="manufacture">
+                         <form:select path = "manufactures" class="select_1" name="manufacture">
 								<c:forEach items="${manufactures}" var="manufacture" >
 								<form:option value="${manufacture}">${manufacture}</form:option>
 								</c:forEach>
 							</form:select>   
-											
+											 -
 						 	
-							
-							<%-- 	<form:select path="manufacture"  >
-									<form:options items="${manufactures}"/>
-							</form:select>  --%>
+					
 							</div>
 							
-							<label><strong>Model:</strong></label>
-							<div class="select_box_1">
-								<select class="select_1">
-									<option value="0">Any</option>
-									<option value="1">R8</option>
-									<option value="2">S500</option>
-									<option value="3">540i</option>
-									<option value="4">RX300</option>
-									<option value="5">Navigator</option>
-									<option value="6">Taurus</option>
-									<option value="7">Doblo</option>
-									<option value="8">Viper</option>
-								</select>
-							</div>
-							<label><strong>Year:</strong></label>
-							<div class="select_box_2">
-								<select class="select_2">
-									<option value="0">From</option>
-									<option value="1">2013</option>
-									<option value="2">2012</option>
-									<option value="3">2011</option>
-									<option value="4">2010</option>
-									<option value="5">2009</option>
-									<option value="6">2008</option>
-									<option value="7">2007</option>
-									<option value="8">2006</option>
-								</select>
-								<select class="select_2">
-									<option value="0">To</option>
-									<option value="1">2013</option>
-									<option value="2">2012</option>
-									<option value="3">2011</option>
-									<option value="4">2010</option>
-									<option value="5">2009</option>
-									<option value="6">2008</option>
-									<option value="7">2007</option>
-									<option value="8">2006</option>
-								</select>
-								<div class="clear"></div>
-							</div>
+						<%--	<label><strong>Model detail for:</strong></label>
+						 	<div class="select_box_1">
+								<form:select path = "typeProducts" class="select_1" name="manufacture">
+								<c:forEach items="${typeProducts}" var="typeProduct" >
+								<form:option value="${typeProduct}">${typeProduct}</form:option>
+								</c:forEach>
+							</form:select>   
+							</div> --%>
+					
 							<label><strong>Price:</strong></label>
 							<div class="select_box_2">
-								<select class="select_2">
+								 <select class="select_2"  name ="pricefrom">
 									<option value="0">From</option>
-									<option value="1">1000</option>
-									<option value="2">2000</option>
-									<option value="3">3000</option>
-									<option value="4">4000</option>
-									<option value="5">5000</option>
-									<option value="6">6000</option>
-									<option value="7">7000</option>
-									<option value="8">8000</option>
+									<option value="1">1</option>
+									<option value="10">10</option>
+									<option value="50">50></option>
+									<option value="100">100</option>
+									<option value="200">200</option>
+									<option value="300">300</option>
+									<option value="400">400</option>
+									<option value="500">500</option>
 								</select>
-								<select class="select_2">
+								<select class="select_2"  name ="priceto">
 									<option value="0">To</option>
-									<option value="1">1000</option>
-									<option value="2">2000</option>
-									<option value="3">3000</option>
-									<option value="4">4000</option>
-									<option value="5">5000</option>
-									<option value="6">6000</option>
-									<option value="7">7000</option>
+									<option value="1000">1000</option>
+									<option value="2000">2000</option>
+									<option value="3000">3000></option>
+									<option value="4000">4000</option>
+									<option value="5000">5000</option>
+									<option value="6000">6000</option>
+									<option value="7000">7000</option>
 									<option value="8">8000</option>
-								</select>
+							</select> 
 								<div class="clear"></div>
 							</div>
 						 
